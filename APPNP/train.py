@@ -30,6 +30,7 @@ if not os.path.isdir(path):
 
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 args.num_features, args.num_classes, candidate, C_list, Gc_list = coarsening(args.dataset, 1-args.coarsening_ratio, args.coarsening_method)
+print(C_list, Gc_list)
 model = Net(args).to(device)
 all_acc = []
 
