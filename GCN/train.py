@@ -120,7 +120,7 @@ if __name__ == '__main__':
     # Write to CSV
     with open('results_data.csv', 'a', newline='') as csvfile:
         writer = csv.writer(csvfile)
-        writer.writerow([f"{args.dataset}", args.coarsening_ratio] + list(dictt.values()) + list(np.sort(all_acc)[-10:]) + [np.mean(all_acc), np.std(all_acc)])
+        writer.writerow([f"{args.dataset}", "few", args.coarsening_ratio] + list(dictt.values()) + list(np.sort(all_acc)[-10:]) + [np.mean(all_acc), np.std(all_acc)])
 
     print('ave_acc: {:.4f}'.format(np.mean(all_acc)), '+/- {:.4f}'.format(np.std(all_acc)))
 
