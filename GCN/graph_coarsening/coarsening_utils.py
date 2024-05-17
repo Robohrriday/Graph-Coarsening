@@ -538,7 +538,7 @@ def contract_variation_linear(G, A=None, K=10, r=0.5, mode="neighborhood"):
             return self.cost < other.cost
 
     family = []
-    W_bool = G.A + sp.sparse.eye(G.N, dtype=np.bool, format="csr")
+    W_bool = G.A + sp.sparse.eye(G.N, dtype=bool, format="csr")
     if "neighborhood" in mode:
         for i in range(N):
             # i_set = G.A[i,:].indices # graph_utils.get_neighbors(G, i)
@@ -571,7 +571,7 @@ def contract_variation_linear(G, A=None, K=10, r=0.5, mode="neighborhood"):
                 family.append(CandidateSet(triangle))
 
     family = SortedList(family)
-    marked = np.zeros(G.N, dtype=np.bool)
+    marked = np.zeros(G.N, dtype=bool)
 
     # ----------------------------------------------------------------------------
     # Construct a (minimum weight) independent set.
@@ -653,7 +653,7 @@ def get_proximity_measure(G, name, K=10):
         assert X.shape[0] == N
         K = X.shape[1]
 
-    proximity = np.zeros(M, dtype=np.float32)
+    proximity = np.zeros(M, dtype=float)
 
     # heuristic for mutligrid
     if name == "heavy_edge":
@@ -801,7 +801,7 @@ def generate_test_vectors(
 
     if method == "JC" or method == "Jacobi":
 
-        deg = G.dw.astype(np.float)
+        deg = G.dw.astype(float)
         D = sp.sparse.diags(deg, 0)
         deginv = deg ** (-1)
         deginv[deginv == np.Inf] = 0
@@ -818,7 +818,7 @@ def generate_test_vectors(
     elif method == "Chebychev":
         from pygsp import filters
 
-        f = filters.Filter(G, lambda x: ((x <= lambda_cut) * 1).astype(np.float32))
+        f = filters.Filter(G, lambda x: ((x <= lambda_cut) * 1).astype(float))
         return f.filter(X, method="chebyshev", order=50)
 
 
@@ -932,7 +932,7 @@ def matching_greedy(G, weights, r=0.4):
     matching = []
 
     # which vertices have been selected
-    marked = np.zeros(N, dtype=np.bool)
+    marked = np.zeros(N, dtype=bool)
 
     n, n_target = N, (1 - r) * N
     while len(candidate_edges) > 0:

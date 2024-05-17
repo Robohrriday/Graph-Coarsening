@@ -1,0 +1,10 @@
+Dataset,cora
+Coarsening ratio,0.0
+coarsen features,coarsen train labels,coarsen train mask,coarsen val labels,coarsen val mask,coarsen edge,data.x,data.y,data.edge_index,Total
+13183600,9200,9200,9200,9200,38400,310445120,216640,1688960,325609520
+
+Dataset,cora
+Coarsening ratio,0.1
+coarsen features,coarsen train labels,coarsen train mask,coarsen val labels,coarsen val mask,coarsen edge,data.x,data.y,data.edge_index,Total
+41270400,28800,28800,28800,28800,342400,310445120,216640,1688960,354078720
+
